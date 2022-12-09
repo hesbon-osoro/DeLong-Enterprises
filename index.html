@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+    New Perspectives on HTML5, CSS3, and JavaScript 6th Edition
+    Tutorial 13
+    Case Problem 2
+    
+    Travel Expense Report
+    Author: Hesbon Osoro
+    Date: 12/10/22   
+
+    Filename: dl_expenses.html
+   -->
+
+    <title>DeLong Enterprises Expense Report</title>
+    <meta charset="utf-8" />
+    <link href="dl_base.css" rel="stylesheet" />
+    <link href="dl_layout.css" rel="stylesheet" />
+    <script src="dl_expenses.js" async></script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="horizontal">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Policies</a></li>
+          <li><a href="#">Reports</a></li>
+          <li><a href="#">Employment</a></li>
+          <li><a href="#">Financial</a></li>
+          <li><a href="#">Insurance</a></li>
+          <li><a href="#">Accounts</a></li>
+        </ul>
+      </nav>
+      <img src="dl_logo.png" alt="DeLong Enterprises" id="logoImg" />
+    </header>
+
+    <section>
+      <form
+        name="expReport"
+        id="expReport"
+        method="post"
+        action="dl_valid.html"
+      >
+        <table id="travelSummary">
+          <tr>
+            <th>Trip Summary<span>*</span></th>
+          </tr>
+          <tr>
+            <td>
+              <textarea id="summary" name="summary" required></textarea>
+            </td>
+          </tr>
+        </table>
+
+        <aside>
+          <h1>Expense Report</h1>
+          <p>
+            Form: 2CEXP15<br />
+            * --- Required Field
+          </p>
+          <p>
+            Send Report To:<br />
+            Debbie Larson<br />
+            Personnel Dept.<br />
+            Rm. 3801<br />
+            Ext. 1250
+          </p>
+        </aside>
+        <table id="empInfo">
+          <tr>
+            <th>Last Name<span>*</span></th>
+            <th>First Name<span>*</span></th>
+            <th>M.I.</th>
+            <th>Account<span>*</span></th>
+            <td>
+              <input
+                type="text"
+                name="accID"
+                id="accID"
+                placeholder="ACTnnnnnn"
+                pattern="ACT\d{6}"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><input type="text" name="lname" id="lname" required /></td>
+            <td><input type="text" name="fname" id="fname" required /></td>
+            <td><input type="text" name="init" id="init" required /></td>
+            <th>Department<span>*</span></th>
+            <td>
+              <input
+                type="text"
+                name="deptID"
+                id="deptID"
+                required
+                placeholder="DEPTnnnnnn"
+                pattern="DEPT\d{4,6}"
+              />
+            </td>
+          </tr>
+          <tr>
+            <th>Social Security Number<span>*</span></th>
+            <td colspan="2">
+              <input
+                type="text"
+                name="ssn"
+                id="ssn"
+                required
+                placeholder="nnn-nn-nnnn"
+                pattern="\d{3}-\d{2}-\d{4}"
+              />
+            </td>
+            <th>Project<span>*</span></th>
+            <td>
+              <input
+                type="text"
+                name="projID"
+                id="projID"
+                required
+                placeholder="PROJ-xx-ddd"
+                pattern="PROJ-[a-z]{2}-\d{3}"
+              />
+            </td>
+          </tr>
+        </table>
+
+        <table id="travelExp">
+          <thead>
+            <tr>
+              <th>Travel Date</th>
+              <th>Air &amp; Trans</th>
+              <th>Lodging</th>
+              <th>Meals &amp; Tips</th>
+              <th>Other</th>
+              <th>TOTAL</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>SUMMARY</th>
+              <td>
+                <input type="text" name="transTotal" id="transTotal" readonly />
+              </td>
+              <td>
+                <input type="text" name="lodgeTotal" id="lodgeTotal" readonly />
+              </td>
+              <td>
+                <input type="text" name="mealTotal" id="mealTotal" readonly />
+              </td>
+              <td>
+                <input type="text" name="otherTotal" id="otherTotal" readonly />
+              </td>
+              <td>
+                <input type="text" name="expTotal" id="expTotal" readonly />
+              </td>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr>
+              <td>
+                <input type="date" name="tDate0" id="tDate0" class="tDate" />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="trans0"
+                  id="trans0"
+                  class="trans date0 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="lodge0"
+                  id="lodg0"
+                  class="lodge date0 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="meal0"
+                  id="meal0"
+                  class="meal date0 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="other0"
+                  id="other0"
+                  class="other date0 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="subtotal0"
+                  id="subtotal0"
+                  class="subtotal"
+                  readonly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="date" name="tDate1" id="tDate1" class="tDate" />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="trans1"
+                  id="trans1"
+                  class="trans date1 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="lodge1"
+                  id="lodg1"
+                  class="lodge date1 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="meal1"
+                  id="meal1"
+                  class="meal date1 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="other1"
+                  id="other1"
+                  class="other date1 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="subtotal1"
+                  id="subtotal1"
+                  class="subtotal"
+                  readonly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="date" name="tDate2" id="tDate2" class="tDate" />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="trans2"
+                  id="trans2"
+                  class="trans date2 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="lodge2"
+                  id="lodg2"
+                  class="lodge date2 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="meal2"
+                  id="meal2"
+                  class="meal date2 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="other2"
+                  id="other2"
+                  class="other date2 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="subtotal2"
+                  id="subtotal2"
+                  class="subtotal"
+                  readonly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="date" name="tDate3" id="tDate3" class="tDate" />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="trans3"
+                  id="trans3"
+                  class="trans date3 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="lodge3"
+                  id="lodg3"
+                  class="lodge date3 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="meal3"
+                  id="meal3"
+                  class="meal date3 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="other3"
+                  id="other3"
+                  class="other date3 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="subtotal3"
+                  id="subtotal3"
+                  class="subtotal"
+                  readonly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="date" name="tDate4" id="tDate4" class="tDate" />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="trans4"
+                  id="trans4"
+                  class="trans date4 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="lodge4"
+                  id="lodg4"
+                  class="lodge date4 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="meal4"
+                  id="meal4"
+                  class="meal date4 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="other4"
+                  id="other4"
+                  class="other date4 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="subtotal4"
+                  id="subtotal4"
+                  class="subtotal"
+                  readonly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="date" name="tDate5" id="tDate5" class="tDate" />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="trans5"
+                  id="trans5"
+                  class="trans date5 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="lodge5"
+                  id="lodg5"
+                  class="lodge date5 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="meal5"
+                  id="meal5"
+                  class="meal date5 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="other5"
+                  id="other5"
+                  class="other date5 sum"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="subtotal5"
+                  id="subtotal5"
+                  class="subtotal"
+                  readonly
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <input id="submitButton" type="submit" value="Submit Report" />
+      </form>
+    </section>
+
+    <footer>
+      <nav class="vertical">
+        <ul>
+          <li><a href="#">Travel Expenses</a></li>
+          <li><a href="#">Information Change</a></li>
+          <li><a href="#">Time Off Request</a></li>
+          <li><a href="#">Paystubs</a></li>
+          <li><a href="#">Health Insurance</a></li>
+          <li><a href="#">Forms/Requests</a></li>
+          <li><a href="#">Team Contacts</a></li>
+          <li><a href="#">Reimbursements</a></li>
+          <li><a href="#">Grievances</a></li>
+          <li><a href="#">Staff Directory</a></li>
+        </ul>
+      </nav>
+      <p>DeLong Enterprises &copy; 2018 All Rights Reserved</p>
+    </footer>
+  </body>
+</html>
